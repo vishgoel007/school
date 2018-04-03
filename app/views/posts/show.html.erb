@@ -1,0 +1,17 @@
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @post.content %>
+</p>
+<p>
+  created by <%= @post.user.email %>
+  role <%= current_user.roles.pluck(:name)[0] %>
+</p>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
