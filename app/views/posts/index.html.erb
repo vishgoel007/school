@@ -16,7 +16,7 @@
       <% if @ability.can? :read, post %>
         <td><%= post.title %></td>
         <td><%= post.content %></td>
-        <td><%= current_user.roles.pluck(:name)[0] %></td>
+        <td><%= post.user.roles.pluck(:name)[0] %></td>
       <% end %>
 
       <td><%= link_to 'Show', post %></td>
