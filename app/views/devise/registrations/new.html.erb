@@ -22,8 +22,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :roles %>
-    <%= f.select :roles, %w{admin teacher student parents}, :prompt => 'Select', required: true, placeholder: 'Roles' %>
+    <%= f.label :type, 'Role' %>
+    <%= f.select :type, %w{Admin Teacher Student Guardian}, :prompt => 'Select', required: true, placeholder: 'Roles' %>
   </div>
 
   <div class="actions">

@@ -1,6 +1,17 @@
 class Grade < ApplicationRecord
 
-  has_many :categories, dependent: :destroy
-  has_many :teachers, through: :categories
+  has_many :user_grades, dependent: :destroy
+  # grade can have many admins
+  has_many :admins, through: :user_grades
+
+  # grade can have many teachers
+  has_many :teachers, through: :user_grades
+
+  # grade can have many students
+  has_many :students , through: :user_grades
+
+  # grade can have only one parent
+  has_one :user_grade, dependent: :destroy
+  has_one :guardian, through: :user_grade
 
 end
