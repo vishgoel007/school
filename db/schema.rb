@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410102940) do
+ActiveRecord::Schema.define(version: 20180410214021) do
 
   create_table "grades", force: :cascade do |t|
     t.integer "cls"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_grades", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "grade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    byebug
     @post = Post.create(
         title: params[:post][:title],
         content: params[:post][:content],

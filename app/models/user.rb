@@ -12,5 +12,7 @@ class User < ApplicationRecord
   scope :students, -> { where(type: 'Student') }
   scope :guardians, -> { where(type: 'Guardian') }
 
+  has_many :posts, dependent: :destroy
+
 
 end
