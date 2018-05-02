@@ -8,6 +8,7 @@ class PostsController < ApplicationController
 
     @posts = Post.all
     @ability = Ability.new(current_user)
+    @post = Post.new
 
   end
 
@@ -16,13 +17,15 @@ class PostsController < ApplicationController
   end
 
   def create
-    byebug
     @post = Post.create(
         title: params[:post][:title],
         content: params[:post][:content],
         user_id: current_user.id
 
     )
+
+    grade = current_user.grades.find_by(cls: params[:post][:grade].to_i)
+    PostGrade.create(post_id: @post.id, grade_id: grade.id)
     redirect_to action: 'index'
 
 

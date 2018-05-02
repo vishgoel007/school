@@ -20,6 +20,7 @@
     <%= form.label :content %>
     <%= form.text_area :content, id: :post_content %>
   </div>
+  <input type="hidden" name="post[grade]" value="<%= grade %>">
 
   <div class="actions">
     <%= form.submit %>

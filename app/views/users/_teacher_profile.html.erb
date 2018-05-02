@@ -1,0 +1,39 @@
+<main>
+  <h1>Profile</h1>
+  <h4>Role: <%= current_user.roles[0].name %></h4>
+
+  <div>
+    <%= image_tag current_user.avatar.url(:medium) %>
+  </div>
+
+  <%= form_for current_user, url: user_path(current_user), html: { method: :patch } do |f| %>
+
+    <div class="form-field">
+
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
+
+    <div class="form-field">
+      <%= f.label :avatar %>
+      <%= f.file_field :avatar %>
+    </div>
+
+    <div class="form-field">
+      <%= f.submit "Update Profile" %>
+    </div>
+
+  <% end %>
+
+  <% @grade_list.each do |grade| %>
+    <h4><%= grade %></h4>
+    <% if current_user.grades.pluck(:cls).include? grade.to_i %>
+      <%= link_to 'Delete grade', remove_grade_path(grade), method: :delete %>
+    <% else %>
+      <%= link_to 'Add grade', add_grade_path(grade), method: :post %>
+    <% end %>
+  <% end %>
+
+  <%= link_to 'Back', posts_path %>
+
+</main>

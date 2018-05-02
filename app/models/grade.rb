@@ -10,12 +10,13 @@ class Grade < ApplicationRecord
   # grade can have many students
   has_many :students , through: :user_grades
 
-  # grade can have only one parent
-  has_one :user_grade, dependent: :destroy
-  has_one :guardian, through: :user_grade
+  # grade can have only many parents
+  has_many :guardians, through: :user_grades
 
   # can have many posts
   has_many :post_grades, dependent: :destroy
   has_many :posts, through: :post_grades
+
+  validates_presence_of :cls
 
 end
