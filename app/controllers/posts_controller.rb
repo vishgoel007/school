@@ -17,15 +17,15 @@ class PostsController < ApplicationController
   end
 
   def create
+    grade = current_user.grades.find_by(cls: params[:post][:grade].to_i)
+
     @post = Post.create(
         title: params[:post][:title],
         content: params[:post][:content],
-        user_id: current_user.id
-
+        user_id: current_user.id,
+        grade_id: grade.id
     )
 
-    grade = current_user.grades.find_by(cls: params[:post][:grade].to_i)
-    PostGrade.create(post_id: @post.id, grade_id: grade.id)
     redirect_to action: 'index'
 
 

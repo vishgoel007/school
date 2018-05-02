@@ -6,7 +6,6 @@ class Post < ApplicationRecord
   belongs_to :user, optional: true
 
   # a post can only be in single grade
-  has_one :post_grade, dependent: :destroy
-  has_one :grade, through: :post_grade
+  belongs_to :grade, optional: true
 
 end

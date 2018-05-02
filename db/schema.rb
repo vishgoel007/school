@@ -10,17 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430093743) do
+ActiveRecord::Schema.define(version: 20180502215144) do
 
   create_table "grades", force: :cascade do |t|
     t.integer "cls"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "post_grades", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "grade_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +24,7 @@ ActiveRecord::Schema.define(version: 20180430093743) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "grade_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -42,12 +36,6 @@ ActiveRecord::Schema.define(version: 20180430093743) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.string "tag_name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "user_grades", force: :cascade do |t|

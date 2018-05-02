@@ -14,8 +14,7 @@ class Grade < ApplicationRecord
   has_many :guardians, through: :user_grades
 
   # can have many posts
-  has_many :post_grades, dependent: :destroy
-  has_many :posts, through: :post_grades
+  has_many :posts, dependent: :destroy
 
   validates_presence_of :cls
 
