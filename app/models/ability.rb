@@ -2,17 +2,19 @@ class Ability
   include CanCan::Ability
 
 
-    def initialize(user)
-      user ||= User.new
-      if user.has_role? :Admin
-        can :manage, :all
-      elsif user.has_role? :Teacher
-        can [:read, :create], Post
-        can [:edit, :update, :destroy, :show], Post, :user_id => user.id
-        # can :manage, Article, :user_id => user.id
-      else
-        can :read, :all
-      end
+    # def initialize(user)
+    #   user ||= User.new
+    #   if user.has_role? :Admin
+    #     can :manage, :all
+    #   elsif user.has_role? :Teacher
+    #     can [:read, :create], Post
+    #     can [:edit, :update, :destroy, :show], Post, :user_id => user.id
+    #     # can :manage, Article, :user_id => user.id
+    #   else
+    #     can :read, :all
+    #   end
+
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
@@ -39,5 +41,4 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-  end
 end

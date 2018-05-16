@@ -1,0 +1,64 @@
+<div style="display: flex">
+  <div class="left-sidebar"
+       style="display: flex;
+           width: 20%;
+           flex-direction: column;">
+    <h4 class="bookmark_posts">click me to Show Bookmarked Posts</h4>
+    <h4 class="grade_posts" id="">click me Grade Posts</h4>
+  </div>
+
+  <div class="right-sidebar" style="display: inline-block;text-align: center;width: 40%;">
+    <div class="student_grade_posts">
+      <h1>Grade:<%= current_user.grade.cls %>  Posts</h1>
+      <% current_user.student_grade_posts.each do |post| %>
+        <% post.each do |p| %>
+          <div class="post-content"
+               style="width: 320px;
+                   margin: 0 auto;
+                   padding: 15px;
+                   border: 1px solid #CCC;
+                   border-radius: 1em;">
+            <p>Title:  <%= p.title %></p>
+            <p>Content:  <%= p.content %></p>
+            <%= link_to p.bookmark_status(current_user), toggle_bookmark_path(post: p) %>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="student_bookmarked_posts" style="display: none;">
+      <h1>Bookmarked Posts</h1>
+      <% current_user.student_bookmarked_posts.each do |post| %>
+          <div class="post-content"
+               style="width: 320px;
+                   margin: 0 auto;
+                   padding: 15px;
+                   border: 1px solid #CCC;
+                   border-radius: 1em;">
+            <p>Title:  <%= post.title %></p>
+            <p>Content:  <%= post.content %></p>
+            <%= link_to post.bookmark_status(current_user), toggle_bookmark_path(post: post) %>
+          </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+      var ele1 = $('.student_grade_posts');
+      var ele2 = $('.student_bookmarked_posts');
+      $('.bookmark_posts').click(function () {
+          ele1.hide();
+          ele2.show();
+      });
+      $('.grade_posts').click(function () {
+          ele1.show();
+          ele2.hide();
+      });
+
+  });
+
+
+
+</script>

@@ -1,10 +1,10 @@
 class RegistrationsController < Devise::RegistrationsController
 
-def create
+  def create
     super
-
-    if user_signed_in?
-      current_user.add_role ((current_user.type).to_sym)
+    if params[:user][:type] == 'Student' and user_signed_in?
+      current_user.grade = Grade.new({cls: params[:user][:std].to_i})
+      current_user.save
     end
 
   end
@@ -12,7 +12,7 @@ def create
   private
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :type)
+    params.require(:user).permit(:email, :password, :password_confirmation, :type, :std)
   end
 
 end

@@ -1,14 +1,10 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:edit, :update, :destroy]
-  load_and_authorize_resource
+  # load_and_authorize_resource
 
 
   def index
-
-    @posts = Post.all
-    @ability = Ability.new(current_user)
-    @post = Post.new
 
   end
 

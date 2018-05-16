@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :posts
   get 'users/profile'
   patch 'users/update' => 'users#update', as: 'user'
-  post 'add_grade/:grade' => 'grades#add_grade', as: 'add_grade'
-  delete 'remove_grade/:grade' => 'grades#remove_grade', as: 'remove_grade'
+  get 'toggle_grade/:grade' => 'grades#toggle_grade', as: 'toggle_grade'
+  get 'toggle_bookmark/:post' => 'bookmarks#toggle_bookmark', as: 'toggle_bookmark'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

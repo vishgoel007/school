@@ -3,14 +3,11 @@ class UsersController < ApplicationController
 
   def profile
     @grade_list = %w[1 2 3 4 5 6 7 8 9 10 11 12]
-    if current_user.type == 'Teacher'
-      render 'users/_teacher_profile'
-    end
 
   end
 
   def update
-    role = current_user.roles[0].name.downcase.to_sym
+    role = current_user.type.downcase.to_sym
     current_user.update(
 
         email: params[role][:email],

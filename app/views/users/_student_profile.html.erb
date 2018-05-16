@@ -6,7 +6,7 @@
     <%= image_tag current_user.avatar.url(:medium) %>
   </div>
 
-  <%= form_for current_user, url: user_path(current_user), html: { method: :patch } do |f| %>
+  <%= form_for current_user, url: user_path(current_user), html: {method: :patch} do |f| %>
 
     <div class="form-field">
 
@@ -20,16 +20,8 @@
     </div>
 
     <div class="form-field">
-      <%= f.submit 'Update Profile' %>
+      <%= f.submit "Update Profile" %>
     </div>
 
   <% end %>
-
-  <% grade_list.each do |grade| %>
-    <h4><%= grade %></h4>
-    <%= link_to current_user.grade_status(grade), toggle_grade_path(grade) %>
-  <% end %>
-
-  <%= link_to 'Back', posts_path %>
-
 </main>

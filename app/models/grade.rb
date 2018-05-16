@@ -18,4 +18,6 @@ class Grade < ApplicationRecord
 
   validates_presence_of :cls
 
+
+
 end
