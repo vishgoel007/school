@@ -11,7 +11,9 @@ class User < ApplicationRecord
 
 
   validates_presence_of :type
-  validates_presence_of :std , allow_blank: false , if: -> { type == 'Student' },
+
+
+  validates_presence_of :std , allow_blank: false , if: -> { type == 'Student' and new_record? },
                          message: 'Student must add grade to continue'
 
 
