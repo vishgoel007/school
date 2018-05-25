@@ -21,8 +21,8 @@
             <p>Title:  <%= p.title %></p>
             <p>Content:  <%= p.content %></p>
             <%= link_to p.bookmark_status(current_user), toggle_bookmark_path(post: p) %>
+          </div>
         <% end %>
-        </div>
       <% end %>
     </div>
     <div class="student_bookmarked_posts" style="display: none;">
